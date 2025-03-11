@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-wrap:balance;
+      }
+
+.tree {
+    position: relative;
+    overflow-x: auto;  /* Горизонтальная прокрутка */
+    overflow-y: hidden;
+    white-space: nowrap; /* Запрет переноса */
+    padding: 20px 0;
+    min-width: max-content; /* Ширина по содержимому */
+}
+
+/* Основной контейнер для всех узлов */
+.tree > ul {
+    display: inline-block; /* Чтобы всё было в одной строке */
+    padding-left: 20px;
+}
+
+/* Уровни древа */
+.tree ul {
+    position: relative;
+    padding: 20px 0 0;
+    vertical-align: top;
+transition: all 0.5s;
+}
+
+/* Элементы списка */
+.tree li {
+    list-style-type: none;
+    float: left; /* Сохраняем float для структуры связей */
+    position: relative;
+    padding: 20px 5px 0 5px;
+    white-space: normal; /* Разрешить перенос текста внутри узлов */
+}
+
+/* Вертикальные соединительные линии */
+.tree li::after,
+.tree li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    width: 50%;
+    height: 20px;
+    border-top: 1px solid #464444;
+}
+
+/* Горизонтальные соединители */
+.tree li::after {
+    right: auto;
+    left: 50%;
+    border-left: 1px solid #464444;
+}
+
+
+/* Для первого и последнего элемента */
+.tree li:first-child::before,
+.tree li:last-child::after {
+    border: 0 none;
+}
+.tree li:last-child::before {
+    border-right: 1px solid #464444;
+    border-radius: 0 2px 0 0;
+  }
+
+/* Вложенные уровни */
+.tree ul ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 20px;
+    border-left: 1px solid #464444;
+}
+
+/* Фикс для узлов с одним потомком */
+.tree li:only-child {
+    padding-top: 0;
+}
+
+.tree li:only-child::after,
+.tree li:only-child::before {
+    display: none;
+}
+
+/* Блоки с именами */
+.tree li a {
+    display: inline-block;
+    width: 75px;
+    padding: 5px 10px;
+    border: 1px solid #464444;
+    border-radius: 5px;
+    transform: translateX(-50%); /* Центрирование */
+    margin-left: 50%;
+    text-decoration: none;
+    font-size: 16px;
+    hyphens: auto;
+    text-align: center;
+}
+.tree li a:hover,
+.tree li a:hover+ul li a {
+    border: 1px solid cornflowerblue;
+    background: lightskyblue;
+    color: #000;
+}
+
+    
+.mullah {
+    background-color: rgb(108, 178, 108);
+  }
+
+  .teacher{
+    background-color: rgb(246, 246, 133);
+  }
